@@ -74,17 +74,17 @@
         app:layout_constraintEnd_toEndOf="@id/edit_vencimento"
         />
 
+    <!--        android:onClick="TelaPrincipal"-->
     <Button
         android:id="@+id/btCancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/LightGrey"
         android:text="Cancelar"
         android:textColor="@color/DodgerBlue"
         android:textSize="12sp"
-        android:layout_marginTop="20dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/containerDespesas"
         app:layout_constraintStart_toStartOf="@id/edit_vencimento"
-         />
+        app:layout_constraintTop_toBottomOf="@id/containerDespesas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

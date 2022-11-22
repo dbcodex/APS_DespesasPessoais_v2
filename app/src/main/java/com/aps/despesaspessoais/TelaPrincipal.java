@@ -80,22 +80,22 @@ public class TelaPrincipal extends AppCompatActivity {
             //String usuarioID;
             @Override
             public void run() {
-                AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "Cadastro").build();
-                CadastroDAO dao = db.cadastroDAO();
+                DespesasDB db = Room.databaseBuilder(getApplicationContext(), DespesasDB.class, "Despesas").build();
+                DespesasDAO dao = db.despesasDAO();
 
                 //FirebaseFirestore dbFb = FirebaseFirestore.getInstance();
                 //usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
 
-                List<Cadastro> cadastro = dao.getByChaveFirebase(usuarioID.toString());
+                List<Despesas> despesas = dao.getByChaveFirebase(usuarioID.toString());
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         String msg;
 
-                        for (Cadastro p:cadastro){
+                        for (Despesas p:despesas){
                             TextView textViewT = new TextView(TelaPrincipal.this);
-                            msg = p.nome + " - " + p.email;
+                            msg = p.descricaoDespesa + " - " + p.valorDespesa + " - " + p.dtVencimento;
                             textViewT.setText(msg);
 
                             listDespesas.addView(textViewT);
@@ -144,3 +144,33 @@ public class TelaPrincipal extends AppCompatActivity {
     }
 
 }
+
+//new Thread(new Runnable(
+//        ) {
+////String usuarioID;
+//@Override
+//public void run() {
+//        DespesasDB db = Room.databaseBuilder(getApplicationContext(), DespesasDB.class, "Despesas").build();
+//        DespesasDAO dao = db.despesasDAO();
+//
+//        //FirebaseFirestore dbFb = FirebaseFirestore.getInstance();
+//        //usuarioID = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
+//
+//        List<Despesas> despesas = dao.getByChaveFirebase(usuarioID.toString());
+//
+//        runOnUiThread(new Runnable() {
+//@Override
+//public void run() {
+//        String msg;
+//
+//        for (Despesas p:despesas){
+//        TextView textViewT = new TextView(TelaPrincipal.this);
+//        msg = p.descricaoDespesa + " - " + p.valorDespesa + " - " + p.dtVencimento;
+//        textViewT.setText(msg);
+//
+//        listDespesas.addView(textViewT);
+//        }
+//        }
+//        });
+//        }
+//        }).start();
